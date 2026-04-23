@@ -1,5 +1,5 @@
 const express = require('express');
-const CategoryController = require('../controller/Category');
+const CategoryController = require('../../controller/adminController/Category');
 const router = express.Router();
 router.get('/', CategoryController.getAllCategories);
 router.post('/create', CategoryController.addCategory);

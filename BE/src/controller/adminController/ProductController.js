@@ -1,11 +1,19 @@
 
-const db = require("../config/db")
+const { get } = require("../../routes/auth")
+const db = require("../../config/db")
  
 const ProductController={
     getAllProducts:(req,res)=>{
         const q="SELECT * FROM products"
         db.query(q,(err,data)=>{
             return res.json(data)
+        })
+    },
+    getProductbyId:(req,res)=>{
+        const productId=req.params.id
+        const q="select * from products where id=?"
+        db.query(q,[productId],(err,data)=>{
+            return res.json(data[0])
         })
     },
     addproduct:(req,res)=>{
